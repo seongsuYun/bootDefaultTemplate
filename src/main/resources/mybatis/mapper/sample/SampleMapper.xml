@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.uwiseone.swp.sample.mapper.SampleMapper">
+	
+	<!-- 오늘날짜 조회 -->
+	<select id="getToday" resultType="string">
+	<![CDATA[
+		SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') AS TODAY FROM DUAL
+	]]>
+	</select>
+	
+	<!-- 샘플 구성원 조회 -->
+	<select id="getSampleMemberInfo" resultType="com.uwiseone.swp.sample.model.SampleVo">
+	<![CDATA[
+		SELECT
+			USERINDEX, USERID, USER_NAME, EMAIL, AVATAR
+		FROM SR00003.VOR1030 
+		WHERE USERINDEX = #{userindex} 
+		  AND LOCALE_CHAR = 'ko'
+	]]>
+	</select>
+	
+	<!-- 샘플 트랜잭션 테스트1 -->
+	<insert id="addTestData1" parameterType="map">
+		INSERT INTO SRADMIN.TEST1(USER_ID, USER_NAME) VALUES (#{USER_ID}, #{USER_NAME})
+	</insert>
+	
+	<!-- 샘플 트랜잭션 테스트2 -->
+	<insert id="addTestData2" parameterType="map">
+		INSERT INTO SRADMIN.TEST2(USER_ID, USER_NAME) VALUES (#{USER_ID}, #{USER_NAME})
+	</insert>
+</mapper>

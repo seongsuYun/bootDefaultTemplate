@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	
+	<property name="LOG_FILE" value="/home/wiseone/v4.0/wologs/server-share/share" />
+	
+	<!-- console로그 설정 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+	    <encoder>
+	        <charset>UTF-8</charset>
+	        <pattern>%d{yyyyMMdd HH:mm:ss.SSS} [%thread] %-3level %logger{5} - %msg %n</pattern>
+	    </encoder>
+	</appender>
+    
+    <!-- 파일로그 설정 -->
+	<appender name="dailyRollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+	        <maxHistory>30</maxHistory>
+	        <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+	            <maxFileSize>100MB</maxFileSize>
+	        </timeBasedFileNamingAndTriggeringPolicy>
+	    </rollingPolicy>
+	    <encoder>
+	        <charset>UTF-8</charset>
+	        <pattern>▶ %-5level %d{HH:mm:ss.SSS} [%thread] %class{36}.%method:%line - %msg%n</pattern>
+	    </encoder>
+	</appender>
+
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="dailyRollingFileAppender"/>
+        <!--
+        <springProfile name="local">
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref="dailyRollingFileAppender"/>
+        </springProfile>
+        <springProfile name="dev">
+        	<appender-ref ref="STDOUT"/>
+            <appender-ref ref="dailyRollingFileAppender"/>
+        </springProfile>
+        <springProfile name="prod">
+            <appender-ref ref="dailyRollingFileAppender"/>
+        </springProfile>
+        -->
+    </root>
+    
+    <logger name="org.springframework" level="INFO" />
+    <logger name="org.mybatis.spring" level="INFO" />
+    <logger name="org.apache.tiles" level="INFO" />
+    <logger name="com.zaxxer.hikari" level="INFO" />
+    <logger name="org.apache.commons.digester" level="INFO" />
+    
+    <logger name="jdbc.sqlonly" level="ERROR" /><!-- SQL문만을 로그로 남기며, PreparedStatement일 경우 관련된 argument 값으로 대체된 SQL문이 보여짐 -->
+    <logger name="jdbc.sqltiming" level="INFO" /><!-- SQL문과 해당 SQL을 실행시키는데 수행된 시간 정보(milliseconds)를 포함 -->
+    <logger name="jdbc.audit" level="WARN" />
+	<logger name="jdbc.resultset" level="ERROR" />
+	<logger name="jdbc.resultsettable" level="INFO" />
+	<logger name="jdbc.connection" level="WARN" />
+	
+</configuration>

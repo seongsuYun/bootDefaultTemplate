@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC 
+		"-//mybatis.org//DTD Config 3.0//EN" 
+		"HTTP://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="true" />
+		<setting name="lazyLoadingEnabled" value="true" />
+		<setting name="aggressiveLazyLoading" value="true" />
+		<setting name="useGeneratedKeys" value="false" />
+		<setting name="defaultExecutorType" value="REUSE" />
+		<setting name="defaultStatementTimeout" value="300" />
+		<setting name="localCacheScope" value="SESSION" />
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<!-- select 결과값이 null라도 key생성 --> 
+		<setting name="callSettersOnNulls" value="true" />
+	</settings>
+
+
+	<!-- VO 내부 annotation으로 처리함.-->
+	<typeAliases></typeAliases>
+
+	<typeHandlers></typeHandlers>
+	
+	<!-- 2018.12.26 미사용 인터셉터는 주석처리 함.
+	<plugins>
+		<plugin interceptor="com.uwiseone.swp.common.interceptor.MybatisInterceptor" />
+	</plugins>
+	-->
+	
+
+</configuration>

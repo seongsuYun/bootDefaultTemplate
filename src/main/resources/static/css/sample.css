@@ -1,0 +1,15 @@
+
+*
+{
+   margin: 0;
+}
+
+html, body
+{
+   height: 100%;
+}
+
+h1
+{
+	border:1px solid red;	
+}
