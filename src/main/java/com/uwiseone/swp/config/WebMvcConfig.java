@@ -14,7 +14,6 @@ import org.springframework.http.CacheControl;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -29,7 +28,6 @@ import com.uwiseone.swp.common.interceptor.LocaleIntercepterAdapter;
 import com.uwiseone.swp.common.resolver.CustomMapArgumentResolver;
 import com.uwiseone.swp.common.util.I18nUtil;
 
-@EnableWebMvc
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer  {
 	
